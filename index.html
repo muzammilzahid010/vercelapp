@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidCrafter - AI Video Creation Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav">
+                <div class="logo">
+                    <div class="logo-icon">✨</div>
+                    <h1>VidCrafter</h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#generate-video" class="nav-link">Generate Video</a>
+                    <a href="#generate-cartoon" class="nav-link">Create Cartoon</a>
+                    <a href="#login" class="nav-link" id="loginBtn">Login</a>
+                </nav>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2 class="hero-title">
+                        <span class="gradient-text">Bring your imagination to life</span>
+                        <br>
+                        <span class="hero-subtitle">
+                            with AI-powered video creation
+                            <span class="emoji">🎬</span>
+                        </span>
+                    </h2>
+                    <p class="hero-description">
+                        Transform your ideas into stunning videos with cutting-edge AI technology.
+                        From concepts to creation in seconds.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#generate-video" class="btn btn-primary">
+                            <span class="btn-icon">✨</span>
+                            Get Started
+                        </a>
+                        <a href="#generate-cartoon" class="btn btn-secondary">
+                            <span class="btn-icon">🎨</span>
+                            Create Cartoon
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Lightning Fast</h3>
+                        <p class="feature-description">Generate videos in seconds, not hours</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3 class="feature-title">AI-Powered</h3>
+                        <p class="feature-description">Advanced AI models for stunning results</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✨</div>
+                        <h3 class="feature-title">Easy to Use</h3>
+                        <p class="feature-description">Simple interface for complex creations</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Generate Video Section -->
+            <section class="generate-section" id="generate-video">
+                <div class="section-content">
+                    <h2 class="section-title">Generate AI Video</h2>
+                    <div class="generator-form">
+                        <div class="form-group">
+                            <label for="video-prompt">Describe your video idea</label>
+                            <textarea id="video-prompt" placeholder="E.g., A beautiful sunset over mountains with cinematic music..." rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="video-duration">Duration</label>
+                            <select id="video-duration">
+                                <option value="30">30 seconds</option>
+                                <option value="60">1 minute</option>
+                                <option value="120">2 minutes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="video-style">Style</label>
+                            <select id="video-style">
+                                <option value="realistic">Realistic</option>
+                                <option value="cinematic">Cinematic</option>
+                                <option value="animated">Animated</option>
+                                <option value="documentary">Documentary</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary btn-large" id="generateVideoBtn">
+                            <span class="btn-icon">🎬</span>
+                            Generate Video
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Generate Cartoon Section -->
+            <section class="generate-section" id="generate-cartoon">
+                <div class="section-content">
+                    <h2 class="section-title">Create Cartoon Video</h2>
+                    <div class="generator-form">
+                        <div class="form-group">
+                            <label for="cartoon-prompt">Describe your cartoon</label>
+                            <textarea id="cartoon-prompt" placeholder="E.g., A funny cat chasing a mouse in a cartoon style..." rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="cartoon-characters">Characters</label>
+                            <input type="text" id="cartoon-characters" placeholder="E.g., Cat, Mouse, Dog">
+                        </div>
+                        <div class="form-group">
+                            <label for="cartoon-style">Cartoon Style</label>
+                            <select id="cartoon-style">
+                                <option value="classic">Classic Cartoon</option>
+                                <option value="anime">Anime</option>
+                                <option value="pixar">Pixar Style</option>
+                                <option value="stick-figure">Stick Figure</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-secondary btn-large" id="generateCartoonBtn">
+                            <span class="btn-icon">🎨</span>
+                            Create Cartoon
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Login Section -->
+            <section class="login-section" id="login">
+                <div class="section-content">
+                    <h2 class="section-title">Login to Your Account</h2>
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                        <button class="btn btn-primary btn-large" id="loginSubmitBtn">
+                            Login
+                        </button>
+                        <p class="login-footer">
+                            Don't have an account? <a href="#register">Sign up</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 VidCrafter. Powered by AI magic.</p>
+        </div>
+    </footer>
+
+    <!-- Loading Modal -->
+    <div class="modal" id="loadingModal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Generating your video...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">✅</div>
+            <h3>Success!</h3>
+            <p id="successMessage">Your video has been generated successfully.</p>
+            <button class="btn btn-primary" id="closeSuccessBtn">Great!</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

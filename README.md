@@ -1,148 +1,149 @@
-# VidCrafter - AI Video Generation Platform
+# 🎬 VidCrafter - AI-Powered Video Creation Platform
 
-A powerful Next.js application for generating AI-powered videos and cartoons with user authentication, file management, and hosting capabilities.
+Transform your ideas into stunning videos with cutting-edge AI technology. From concepts to creation in seconds.
 
-## 🚀 Features
+## ✨ Features
 
-### Core Functionality
-- **AI Video Generation**: Generate videos from text prompts using advanced AI models
-- **Cartoon Video Creation**: Create animated cartoon stories with custom characters
-- **User Authentication**: Complete login/register system with session management
-- **File Management**: Upload, download, and host media files
-- **Usage Tracking**: Monitor user generation limits and usage statistics
+- 🎥 **AI Video Generation** - Create videos from text prompts
+- 🎨 **Cartoon Video Creation** - Generate animated cartoon videos
+- 👤 **User Authentication** - Secure login and registration system
+- 🎟️ **Coupon System** - Manage generation credits with coupons
+- 📊 **Admin Dashboard** - Comprehensive admin panel
+- 📱 **Responsive Design** - Works perfectly on all devices
+- ⚡ **Lightning Fast** - Generate videos in seconds, not hours
 
-### Technical Features
-- **Next.js 15** with App Router
-- **TypeScript** for type safety
-- **Tailwind CSS** with shadcn/ui components
-- **Prisma ORM** with SQLite database
-- **Authentication** with NextAuth.js
-- **File Hosting** with local storage
-- **API Routes** for backend functionality
-- **Responsive Design** for all devices
-
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 15
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + shadcn/ui
-- **Database**: Prisma + SQLite
-- **Authentication**: NextAuth.js
-- **State Management**: Zustand + React Hooks
-- **File Storage**: Local filesystem with API serving
-- **Deployment**: Vercel-ready
-
-## 📦 Installation
+## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+ 
 - npm or yarn
 
-### Setup
+### Installation
 
 1. **Clone the repository**
-```bash
-git clone https://github.com/yourusername/vidcrafter.git
-cd vidcrafter
-```
+   ```bash
+   git clone https://github.com/muzammilzahid010/vercelapp.git
+   cd vercelapp
+   ```
 
 2. **Install dependencies**
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. **Set up environment variables**
-```bash
-cp .env.example .env.local
-```
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Edit `.env.local` and add:
+   ```
+   JWT_SECRET=your-super-secret-jwt-key
+   DATABASE_URL=file:./dev.db
+   NEXTAUTH_URL=http://localhost:3000
+   ZAI_API_KEY=your-zai-api-key
+   ```
 
-Edit `.env.local` with your configuration:
-```env
-# Database
-DATABASE_URL="file:./dev.db"
+4. **Initialize database**
+   ```bash
+   npm run db:push
+   npm run db:generate
+   ```
 
-# NextAuth.js
-NEXTAUTH_SECRET="your-secret-key"
-NEXTAUTH_URL="http://localhost:3000"
+5. **Seed admin user** (optional)
+   ```bash
+   node scripts/seed-admin.js
+   ```
 
-# AI SDK (if needed)
-ZAI_API_KEY="your-zai-api-key"
+6. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-# External APIs
-N8N_WEBHOOK_URL="your-n8n-webhook-url"
-```
+7. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-4. **Set up the database**
-```bash
-npx prisma generate
-npx prisma db push
-```
-
-5. **Run the development server**
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view the application.
-
-## 🏗️ Project Structure
+## 📁 Project Structure
 
 ```
 vidcrafter/
 ├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── api/               # API routes
-│   │   │   ├── auth/          # Authentication endpoints
-│   │   │   ├── generation/    # Video generation APIs
-│   │   │   ├── upload/        # File upload API
-│   │   │   ├── download/      # File download API
-│   │   │   └── files/         # File serving API
-│   │   ├── generate-video/    # Video generation page
-│   │   ├── generate-cartoon/  # Cartoon generation page
-│   │   ├── files/             # File manager page
-│   │   ├── login/             # Login page
-│   │   ├── register/          # Registration page
-│   │   └── page.tsx           # Home page
-│   ├── components/            # React components
-│   │   ├── ui/               # shadcn/ui components
-│   │   └── file-manager.tsx  # File management component
-│   ├── lib/                  # Utility libraries
-│   │   ├── db.ts            # Database client
-│   │   └── auth.ts          # Authentication config
-│   └── hooks/               # Custom React hooks
-├── prisma/
-│   └── schema.prisma        # Database schema
-├── downloads/               # File storage (gitignored)
-└── public/                 # Static assets
+│   ├── app/                 # Next.js App Router
+│   │   ├── page.tsx        # Homepage
+│   │   ├── layout.tsx      # Root layout
+│   │   ├── api/            # API routes
+│   │   ├── generate-video/ # Video generation page
+│   │   ├── generate-cartoon/ # Cartoon generation page
+│   │   ├── login/          # Login page
+│   │   ├── account/        # User account
+│   │   └── admin/          # Admin panel
+│   ├── components/         # React components
+│   │   └── ui/            # shadcn/ui components
+│   ├── lib/               # Utilities
+│   └── hooks/             # Custom hooks
+├── docs/                  # Documentation
+├── scripts/               # Utility scripts
+├── prisma/               # Database schema
+└── public/               # Static assets
+```
+
+## 🎯 Available Scripts
+
+```bash
+# Development
+npm run dev              # Start development server
+npm run build           # Build for production
+npm run start           # Start production server
+npm run lint            # Run ESLint
+
+# Database
+npm run db:push         # Push schema to database
+npm run db:generate     # Generate Prisma client
+npm run db:migrate      # Run migrations
+npm run db:reset        # Reset database
+
+# Scripts
+node scripts/seed-admin.js     # Create admin user
+node scripts/create-test-coupons.js # Create test coupons
+```
+
+## 🔧 Environment Variables
+
+Create a `.env.local` file with the following variables:
+
+```env
+# Required
+JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+DATABASE_URL=file:./dev.db
+NEXTAUTH_URL=http://localhost:3000
+
+# Optional (for AI features)
+ZAI_API_KEY=your-zai-api-key-here
 ```
 
 ## 🚀 Deployment
 
-### Vercel Deployment
+### Vercel (Recommended)
 
 1. **Push to GitHub**
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
 
 2. **Connect to Vercel**
-- Go to [vercel.com](https://vercel.com)
-- Import your GitHub repository
-- Vercel will automatically detect Next.js
+   - Import your repository in Vercel
+   - Set environment variables in Vercel dashboard
+   - Deploy automatically
 
-3. **Environment Variables**
-Add these environment variables in Vercel dashboard:
-```
-DATABASE_URL=your-production-database-url
-NEXTAUTH_SECRET=your-production-secret
-NEXTAUTH_URL=https://your-domain.vercel.app
-```
-
-4. **Database Setup**
-- Use Vercel Postgres or external database
-- Run `npx prisma db push` on production
+3. **Required Environment Variables in Vercel**
+   ```
+   JWT_SECRET=your-super-secret-jwt-key
+   DATABASE_URL=file:./dev.db
+   NEXTAUTH_URL=https://your-app.vercel.app
+   ```
 
 ### Manual Deployment
 
@@ -151,72 +152,54 @@ npm run build
 npm start
 ```
 
-## 📝 Available Scripts
+## 📚 Documentation
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run db:push` - Push database schema
-- `npm run db:generate` - Generate Prisma client
+- [Deployment Guide](docs/DEPLOYMENT.md)
+- [Git Usage Guide](docs/GIT_GUIDE.md)
+- [Vercel Setup](docs/VERCEL_ENVIRONMENT_SETUP.md)
+- [Troubleshooting](docs/VERCEL_ERROR_TROUBLESHOOTING.md)
 
-## 🔧 Configuration
+## 🛠️ Technology Stack
 
-### Database Schema
-The application uses Prisma with the following main models:
-- `User` - User accounts and authentication
-- `GenerationLog` - Video generation tracking
-- `Coupon` - Usage coupon system
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Database**: SQLite with Prisma ORM
+- **Authentication**: JWT tokens
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **AI Integration**: ZAI Web Dev SDK
 
-### File Storage
-Files are stored in `/downloads` directory organized by type:
-- `/downloads/video/` - Video files
-- `/downloads/image/` - Image files
-- `/downloads/audio/` - Audio files
-- `/downloads/document/` - Document files
+## 🎨 Features Overview
 
-### API Endpoints
+### Video Generation
+- Text-to-video generation
+- Multiple video orientations
+- Custom story scripts
+- Character customization
+- Generation limits and logging
 
-#### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `GET /api/auth/me` - Get current user
-- `POST /api/auth/logout` - User logout
+### User Management
+- Secure authentication
+- User registration and login
+- Account management
+- Generation history
+- Coupon system
 
-#### Video Generation
-- `POST /api/generation/generate` - Generate video
-- `GET /api/generation/check-limit` - Check usage limits
-- `POST /api/generation/log` - Log generation
-
-#### File Management
-- `POST /api/upload` - Upload files
-- `GET /api/download` - List files
-- `POST /api/download` - Download from URL
-- `GET /api/files/[type]/[filename]` - Serve files
-
-## 🎯 Usage
-
-1. **Register/Login**: Create an account or login
-2. **Generate Videos**: Use text prompts to create AI videos
-3. **Create Cartoons**: Design animated stories with characters
-4. **Manage Files**: Upload, download, and organize media
-5. **Track Usage**: Monitor generation limits and history
-
-## 🔒 Security Features
-
-- **Authentication**: Secure user sessions
-- **Input Validation**: Sanitized user inputs
-- **File Security**: Protected file uploads with type validation
-- **Rate Limiting**: Usage limits per user
-- **CORS**: Proper cross-origin handling
+### Admin Panel
+- User statistics
+- Coupon management
+- Generation logs
+- System health monitoring
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
@@ -224,20 +207,21 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-If you encounter any issues or have questions:
+If you encounter any issues:
 
-1. Check the [Issues](https://github.com/yourusername/vidcrafter/issues) page
-2. Create a new issue with detailed information
-3. Join our Discord community (link coming soon)
+1. Check the [troubleshooting guide](docs/VERCEL_ERROR_TROUBLESHOOTING.md)
+2. Review [deployment documentation](docs/DEPLOYMENT.md)
+3. Check environment variables setup
+4. Open an issue on GitHub
 
-## 🌟 Acknowledgments
+## 🎉 Acknowledgments
 
-- Next.js team for the amazing framework
-- Vercel for hosting and deployment
-- Prisma for the database toolkit
-- shadcn/ui for the component library
-- All contributors and users of VidCrafter
+- Built with [Next.js](https://nextjs.org/)
+- UI components by [shadcn/ui](https://ui.shadcn.com/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Database by [Prisma](https://www.prisma.io/)
+- Icons by [Lucide](https://lucide.dev/)
 
 ---
 
-**Built with ❤️ using Next.js and modern web technologies**
+**Transform your imagination into reality with VidCrafter!** 🚀
