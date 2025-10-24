@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                      String   @id @default(cuid())
+  email                   String   @unique
+  password_hash           String
+  ip_address              String
+  cartoon_videos_generated Int     @default(0)
+  is_admin                Boolean  @default(false)
+  coupon_balance          Int      @default(0)
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  
+  generationLogs          GenerationLog[]
+  couponUsages            CouponUsage[]
+}
+
+model Coupon {
+  id            String   @id @default(cuid())
+  code          String   @unique
+  value         Int
+  used          Boolean  @default(false)
+  created_by_admin String
+  used_by_user  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  couponUsages  CouponUsage[]
+}
+
+model CouponUsage {
+  id        String   @id @default(cuid())
+  userId    String
+  couponId  String
+  createdAt DateTime @default(now())
+  
+  user      User     @relation(fields: [userId], references: [id])
+  coupon    Coupon   @relation(fields: [couponId], references: [id])
+}
+
+model GenerationLog {
+  id            String   @id @default(cuid())
+  userId        String
+  video_type    String   // "regular" or "cartoon"
+  status        String   // "success" or "failed"
+  reason        String?  // reason if failed
+  prompt        String?
+  orientation   String?
+  story_script  String?
+  characters    String?  // JSON string
+  response_data String?  // JSON response from API
+  timestamp     DateTime @default(now())
+  
+  user          User     @relation(fields: [userId], references: [id])
+}
